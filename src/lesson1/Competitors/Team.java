@@ -2,14 +2,18 @@ package lesson1.Competitors;
 
 public class Team{
 
-    String teamName;
-    public Competitor [] competitors;
+    private String teamName;
+    private Competitor [] competitors;
 
     public Team(String teamName, Competitor[] competitors) {
         this.teamName = teamName;
         this.competitors = competitors;
     }
 
+    /*public Team(String teamName, Competitor ... competitors) {
+        this.teamName = teamName;
+        this.competitors = competitors;
+    }*/
     public void showTeamInfo(){
         System.out.println("Команда: " + teamName);
         for(Competitor c: competitors){
@@ -22,5 +26,9 @@ public class Team{
         for(Competitor c: competitors){
             if(c.isOnDistance()) c.showInfo();
         }
+    }
+
+    public Competitor[] getCompetitors() {
+        return competitors;
     }
 }
