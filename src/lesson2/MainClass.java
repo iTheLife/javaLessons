@@ -3,7 +3,26 @@ package lesson2;
 
 public class MainClass {
     public static void main(String[] args) {
-        throw new MyException("Сгенерировано исключение");
+
+        int sum = 0;
+        String[][] mas = {
+                {"-9","1","0","1"},
+                {"4","1","1","1"},
+                {"-2","2","-1","1"},
+                {"-1","1","1","a"}
+        };
+
+        ArrayClass arrayClass = new ArrayClass();
+        try {
+            sum = arrayClass.doHomeWork(mas);
+        }
+        catch(MyArrayClassException e){
+            System.out.println("Получен массив недопустимого размера");
+        }
+        catch(MyArrayDataException e){
+            System.out.println(String.format("Произошел сбой в ячейке %d %d",e.getX(),e.getY()));
+        }
+        System.out.println("Сумма массива: " + sum);
     }
 //    public static void main(String[] args) {
 //        FileOutputStream out = null;

@@ -1,6 +1,6 @@
 package lesson2;
 
-public class MyException extends RuntimeException {
+public class MyArrayDataException extends RuntimeException {
 
     private int x;
     private int y;
@@ -13,7 +13,7 @@ public class MyException extends RuntimeException {
         return y;
     }
 
-    public MyException(int x, int y) {
+    public MyArrayDataException(int x, int y) {
         super(String.format("Произошел сбой в ячейке %d %d",x,y));
         this.x = x;
         this.y = y;
