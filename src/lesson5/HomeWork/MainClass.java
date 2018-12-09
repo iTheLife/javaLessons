@@ -39,10 +39,7 @@ public class MainClass {
         System.arraycopy(arr, h, a2, 0, h);
 
         Thread t1 = new Thread(() -> {
-            for (int i = 0; i < h; i++) {
-                a1[i] = (float) (a1[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-
-            }
+            calculate(a1, 0);
             //System.out.println("Первый поток закончил вычисления");
             synchronized (concat) {
                 //System.out.println("Первый поток начал склейку");
@@ -50,10 +47,7 @@ public class MainClass {
             }
         });
         Thread t2 = new Thread(() -> {
-            for (int i = 0; i < h; i++) {
-                a2[i] = (float) (a2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
-
-            }
+            calculate(a2, h);
             //System.out.println("Второй поток закончил вычисления");
             synchronized (concat) {
                 //System.out.println("Второй поток начал склейку");
@@ -71,6 +65,14 @@ public class MainClass {
 
         System.out.println(System.currentTimeMillis() - a);
 
+    }
+
+    private static void calculate(float[] a2, int offset) {
+        for (int i = 0; i < h; i++) {
+            int j = i + offset;
+            a2[i] = (float) (a2[i] * Math.sin(0.2f +j / 5) * Math.cos(0.2f + j / 5) * Math.cos(0.4f + j / 2));
+
+        }
     }
 }
 
